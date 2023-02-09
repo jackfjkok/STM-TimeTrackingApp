@@ -1,0 +1,328 @@
+﻿@page
+@model IndexModel
+@{
+    ViewData["Title"] = "Home page";
+}
+
+
+<div class=" text-center">
+    <h1 class="display-4">Mechanization Time Bank</h1>
+</div>
+
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Getting Started with Chart JS with www.chartjs3.com</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            font-family: sans-serif;
+        }
+
+        .chartMenu {
+            width: 100vw;
+            height: 40px;
+            background: #1A1A1A;
+            color: rgba(54, 162, 235, 1);
+        }
+
+            .chartMenu p {
+                padding: 10px;
+                font-size: 20px;
+            }
+
+        .chartCard {
+            width: 85vw;
+            height: calc(65vh - 40px);
+            background: rgb(255, 255, 255);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .chartBox {
+            width: 350px;
+            padding: 20px;
+            border-radius: 20px;
+            border: solid 1px rgba(54, 162, 235, 1);
+            background: white;
+        }
+
+        
+        .sidebar {
+            width: 160px;
+            background-color: rgb(128, 128, 128);
+            color: #fff;
+            position: fixed;
+            height: 100%;
+            padding-top: 50px;
+            left : 0;
+            top : 0;
+         
+        }
+
+        .sidebar-nav {
+            padding: 0;
+            list-style: none;
+        }
+        
+        .sidebar-nav li {
+            line-height: 40px;
+
+        }
+        
+        .sidebar-nav a {
+            display: block;
+            text-decoration: none;
+            color: #fff;
+
+        }
+        
+        .sidebar-nav i {
+            margin-right: 0px;
+
+        }
+       
+
+        .progress {
+
+            width:70%;
+            float:right;
+
+        }
+
+        .progress-bar{
+           
+            width :50%;
+            height:50px;
+            float: left;
+
+        }
+
+    </style>
+</head>
+<body>
+    <div class="chartCard">
+        <div class="chartBox">
+            <canvas id="myChart"></canvas>
+        </div>
+        <div class="chartBox">
+            <canvas id="myChartDoughnut"></canvas>
+        </div>
+    </div>
+    <div class="progress">
+        <div id="progressBar" class="progress-bar" role="progressbar" style="width: 50%">50%</div>
+    </div>
+    <div class="progress">
+        <div id="progressBar2" class="progress-bar" role="progressbar" style="width: 30%">30%</div>
+    </div>
+    <div class="progress">
+        <div id="progressBar3" class="progress-bar" role="progressbar" style="width: 30%">30%</div>
+    </div>
+    <div class="progress">
+        <div id="progressBar4" class="progress-bar" role="progressbar" style="width: 30%">30%</div>
+    </div>
+    <div class="progress">
+        <div id="progressBar5" class="progress-bar" role="progressbar" style="width: 30%">30%</div>
+    </div>
+
+
+    <script type="text/javascript" src="https://cdn.jsdelivr.net/npm/chart.js/dist/chart.umd.min.js"></script>
+
+
+    <script>
+
+        // setup
+        const data = {
+            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            datasets: [{
+                label: 'Weekly Sales',
+                data: [18, 12, 6, 9, 12, 3, 9],
+                backgroundColor: [
+                    'rgba(255, 26, 104, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(0, 0, 0, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 26, 104, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(0, 0, 0, 1)'
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        // config
+        const config = {
+            type: 'bar',
+            data,
+            options: {
+                aspectRatio: 1,
+                scales: {
+                    y: {
+                        beginAtZero: true
+                    }
+                }
+            }
+        };
+
+        // render init block
+        const myChart = new Chart(
+            document.getElementById('myChart'),
+            config
+        );
+
+        // setup
+        const dataDoughnut = {
+            labels: ['Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat', 'Sun'],
+            datasets: [{
+                label: 'Weekly Sales',
+                data: [18, 12, 6, 9, 12, 3, 9],
+                backgroundColor: [
+                    'rgba(255, 26, 104, 0.2)',
+                    'rgba(54, 162, 235, 0.2)',
+                    'rgba(255, 206, 86, 0.2)',
+                    'rgba(75, 192, 192, 0.2)',
+                    'rgba(153, 102, 255, 0.2)',
+                    'rgba(255, 159, 64, 0.2)',
+                    'rgba(0, 0, 0, 0.2)'
+                ],
+                borderColor: [
+                    'rgba(255, 26, 104, 1)',
+                    'rgba(54, 162, 235, 1)',
+                    'rgba(255, 206, 86, 1)',
+                    'rgba(75, 192, 192, 1)',
+                    'rgba(153, 102, 255, 1)',
+                    'rgba(255, 159, 64, 1)',
+                    'rgba(0, 0, 0, 1)'
+                ],
+                borderWidth: 1
+            }]
+        };
+
+        // config
+        const configDoughnut = {
+            type: 'doughnut',
+            data: dataDoughnut,
+            options: {
+
+
+            }
+        };
+
+        // render init block
+        const myChartDoughnut = new Chart(
+            document.getElementById('myChartDoughnut'),
+            configDoughnut
+        );
+    </script>
+
+</body>
+</html>
+
+<!---
+<html>
+<head>
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.9.3/dist/Chart.min.js"></script>
+</head>
+
+<body>
+    <h2>Progress Overview</h2>
+    <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut </p>
+
+
+    <canvas id="pieChart"></canvas>
+    <canvas id="barChart"></canvas>
+
+
+    <script>
+
+        var barChart = new Chart(document.getElementById("barChart"), {
+            type: 'bar',
+            data: {
+                labels: ["January", "February", "March", "April", "May", "June"],
+                datasets: [{
+                    label: 'Sales',
+                    data: [12, 19, 3, 5, 2, 3],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+
+        var pieChart = new Chart(document.getElementById("pieChart"), {
+            type: 'pie',
+            data: {
+                labels: ["January", "February", "March", "April", "May", "June"],
+                datasets: [{
+                    label: 'Sales',
+                    data: [12, 19, 3, 5, 2, 3],
+                    backgroundColor: [
+                        'rgba(255, 99, 132, 0.2)',
+                        'rgba(54, 162, 235, 0.2)',
+                        'rgba(255, 206, 86, 0.2)',
+                        'rgba(75, 192, 192, 0.2)',
+                        'rgba(153, 102, 255, 0.2)',
+                        'rgba(255, 159, 64, 0.2)'
+                    ],
+                    borderColor: [
+                        'rgba(255, 99, 132, 1)',
+                        'rgba(54, 162, 235, 1)',
+                        'rgba(255, 206, 86, 1)',
+                        'rgba(75, 192, 192, 1)',
+                        'rgba(153, 102, 255, 1)',
+                        'rgba(255, 159, 64, 1)'
+                    ],
+                    borderWidth: 1
+                }]
+            },
+            options: {
+                scales: {
+                    yAxes: [{
+                        ticks: {
+                            beginAtZero: true
+                        }
+                    }]
+                }
+            }
+        });
+
+    </script>
+</body>
+</html>
+    ->
